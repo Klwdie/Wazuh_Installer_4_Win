@@ -44,6 +44,8 @@ You can edit this stuff within the script before deployment.
       <ProcessCreate onmatch="include">
          <!--Powershell-->
          <Image condition="contains">powershell.exe</Image>
+         <!--Mimikatz-->
+         <Image condition="contains">mimikatz.exe</Image>
          <!--Event Viewer-->
          <CommandLine condition="contains">eventvwr.msc</CommandLine>
       </ProcessCreate>
