@@ -4,7 +4,7 @@ Getting Wazuh agents quickly especially with Sysmon can be tedious, so I made th
 
 ## How to use:
 
-1. ```Download the file.```
+1. Download the file.
 2. ```cd "C:\path\to\wherever\it\is\"```
 3. Edit the file to include the specific Agent version, Manager IP, and whatever other changes you'd like. ```powershell -noexit -ExecutionPolicy Bypass ise -File .\Wazuh-Installer.ps1```
 4. ```powershell -noexit -ExecutionPolicy Bypass -File .\Wazuh-Installer.ps1```
