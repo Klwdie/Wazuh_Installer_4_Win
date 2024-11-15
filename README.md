@@ -15,7 +15,7 @@ Obviously all environments are different, so I encourage you to edit this as you
 
 You can use the resources below as a guide:
 
-https://tryhackme.com/r/room/wazuhct (OUTDATED - Do not use the local_rules.xml it mentions: https://groups.google.com/g/wazuh/c/7lBYzNHdjX4)
+https://tryhackme.com/r/room/wazuhct (OUTDATED - Do not use the ```local_rules.xml``` it mentions, here is why: https://groups.google.com/g/wazuh/c/7lBYzNHdjX4)
 
 https://wazuh.com/blog/learn-to-detect-threats-on-windows-by-monitoring-sysmon-events/
 
