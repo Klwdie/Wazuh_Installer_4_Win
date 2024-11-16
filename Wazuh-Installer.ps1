@@ -53,15 +53,24 @@ $purin = @"
 Write-Output $purin
 
 # Navigate to the Temp directory
-Set-Location C:\Temp
+$TempDir = [System.IO.Path]::GetTempPath()
+Set-Location $TempDir
+
+# Check the latest version of Wazuh
+# Comment these out if you manually set the version
+$url = 'https://github.com/wazuh/wazuh/releases/latest'
+$request = [System.Net.WebRequest]::Create($url)
+$response = $request.GetResponse()
+$realTagUrl = $response.ResponseUri.OriginalString
+$LatestWazuh = $realTagUrl.split('/')[-1].Trim('v')
 
 # Download the Wazuh agent MSI
-Write-Output "Downloading Wazuh agent..."
-Invoke-WebRequest -Uri "https://packages.wazuh.com/4.x/windows/wazuh-agent-4.9.2-1.msi" -OutFile "wazuh-agent.msi" #Make sure to set the right version.
+Write-Output "Downloading Wazuh agent version $LatestWazuh..."
+Invoke-WebRequest -Uri "https://packages.wazuh.com/4.x/windows/wazuh-agent-$LatestWazuh-1.msi" -OutFile "wazuh-agent.msi" #Make sure to set the right version.
 
 # Install the Wazuh agent
 Write-Output "Installing Wazuh agent..."
-Start-Process "msiexec.exe" -ArgumentList "/i wazuh-agent.msi /q WAZUH_MANAGER=<DONT_FORGET_YOUR_MANAGER_IP>" -Wait #Make sure to set the Wazuh Manager IP.
+Start-Process "msiexec.exe" -ArgumentList "/i wazuh-agent.msi /q WAZUH_MANAGER=<DONT_FORGET_YOUR_MANAGER_IP>" -Wait #Make sure to set the Wazuh Manager IP or FQDN.
 
 NET START Wazuh
 
