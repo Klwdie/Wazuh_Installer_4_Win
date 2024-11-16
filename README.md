@@ -1,6 +1,6 @@
 # Wazuh Installer for Windows
 
-Getting Wazuh agents quickly especially with Sysmon can be tedious, so I made this script to simply it.
+Getting Wazuh agents deployed quickly especially with Sysmon can be tedious, so I made this script to simplify it.
 
 ## How to use:
 
