@@ -9,6 +9,8 @@ Getting Wazuh agents quickly especially with Sysmon can be tedious, so I made th
 3. Edit the file to include the specific Agent version, Manager IP, and whatever other changes you'd like. ```powershell -noexit -ExecutionPolicy Bypass ise -File .\Wazuh-Installer.ps1```
 4. ```powershell -noexit -ExecutionPolicy Bypass -File .\Wazuh-Installer.ps1```
 
+While you can set the Manager IP or FQDN to be an input, that takes time. If you are deploying Wazuh agents to a large environment having it static might be preferred.
+
 ---
 
 Obviously all environments are different, so I encourage you to edit this as you need for you OWN environment. You MAY also need to edit the version Agent being downloaded.
