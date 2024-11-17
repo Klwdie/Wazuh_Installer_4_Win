@@ -96,7 +96,7 @@ Set-Location "C:\Program Files (x86)\ossec-agent\Sysmon\"
 # Wait for 2 seconds
 Start-Sleep -Seconds 2
 
-# Create Sysmon.xml file
+# If custom create Sysmonconfig.xml file here
 $xmlContent = @'
 <Sysmon schemaversion="4.10">
    <HashAlgorithms>md5</HashAlgorithms>
@@ -137,11 +137,15 @@ $xmlContent = @'
    </EventFiltering>
 </Sysmon>
 '@
-$xmlContent | Out-File -FilePath "Sysconfig.xml"
+# $xmlContent | Out-File -FilePath "Sysmonconfig.xml" # Uncomment this if custom
+
+# Download preconfigured Sysmonconfig.xml file
+Write-Output "Downloading Sysmon configuration file..."
+Invoke-WebRequest -Uri "https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml" -OutFile "Sysmonconfig.xml"  
 
 # Install Sysmon with the specified configuration
 Write-Output "Starting Sysmon..."
-Start-Process -FilePath ".\Sysmon64.exe" -ArgumentList "-accepteula -i Sysconfig.xml" -Wait
+Start-Process -FilePath ".\Sysmon64.exe" -ArgumentList "-accepteula -i Sysmonconfig.xml" -Wait
 
 # Navigate back to the ossec-agent directory
 Set-Location "C:\Program Files (x86)\ossec-agent\"
@@ -194,6 +198,20 @@ $newConfigContent = $configContent[0..33] + $newConfig + $configContent[34..$con
 
 # Write the updated content back to ossec.conf
 $newConfigContent | Set-Content -Path $configPath
+
+# Example FIM Configuration to be added at line 189
+$FIMConfig = @'
+
+    <!-- Custom FIM -->
+    <directories check_all="yes" whodata="yes" report_changes="yes" recursion_level="320">C:\Users\</directories>
+    <directories>%WINDIR%/System32</directories>
+    <directories>%WINDIR%/SysWOW64</directories>
+'@
+# Insert the new configuration at line 189
+$FIMConfigContent = $configContent[0..188] + $FIMConfig + $configContent[189..$configContent.Length]
+
+# Write the updated content back to ossec.conf
+$FIMConfigContent | Set-Content -Path $configPath
 
 Write-Output "Getting the Wazuh agent ready..."
 Restart-Service -Name wazuh
