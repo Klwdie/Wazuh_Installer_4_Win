@@ -5,11 +5,13 @@ Getting Wazuh agents deployed quickly especially with Sysmon can be tedious, so 
 ## How to use:
 
 1. Open: ```PowerShell```
-2. To download and run as one command (not recommended): ```powershell Set-Location "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads"; powershell -NoLogo -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Klwdie/Wazuh_Installer_4_Win/refs/heads/main/Wazuh-Installer.ps1' -OutFile '${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1'"; powershell -noexit -ExecutionPolicy Bypass -File "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1"```
+2. To download and run as one command (not recommended): ```powershell -NoLogo -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Klwdie/Wazuh_Installer_4_Win/refs/heads/main/Wazuh-Installer.ps1' -OutFile '${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1'"; powershell -noexit -ExecutionPolicy Bypass -File "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1"```
 3. To just download: ```powershell Set-Location "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads"; powershell -NoLogo -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Klwdie/Wazuh_Installer_4_Win/refs/heads/main/Wazuh-Installer.ps1' -OutFile '${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1'"```
 4. To delete the file: ```powershell Remove-Item -Path "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1" -Force```
 
-While you can set the Manager IP or FQDN to be an input, that takes time. If you are deploying Wazuh agents to a large environment having it static might be preferred.
+This is configured with Wazuh's [Sysmonconfig.xml](https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml) and an input variable for the Wazuh Manager IP or FQDN. 
+
+You are welcome to download this script and customize it to your needs like setting a static Wazuh Manager IP or FQDN, adding a FIM, Active Response, or other Sysmon configuration.
 
 ---
 
