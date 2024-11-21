@@ -51,6 +51,7 @@ $purin = @"
 
 "@
 Write-Output $purin
+$Wazuh_Manager_IP_or_FQDN = Read-Host "Input your Wazuh Manager's IP or FQDN"
 
 # Navigate to the Temp directory
 $TempDir = [System.IO.Path]::GetTempPath()
@@ -70,7 +71,7 @@ Invoke-WebRequest -Uri "https://packages.wazuh.com/4.x/windows/wazuh-agent-$Late
 
 # Install the Wazuh agent
 Write-Output "Installing Wazuh agent..."
-Start-Process "msiexec.exe" -ArgumentList "/i wazuh-agent.msi /q WAZUH_MANAGER=<DONT_FORGET_YOUR_MANAGER_IP>" -Wait #Make sure to set the Wazuh Manager IP or FQDN.
+Start-Process "msiexec.exe" -ArgumentList "/i wazuh-agent.msi /q WAZUH_MANAGER=$Wazuh_Manager_IP_or_FQDN" -Wait #Make sure to set the Wazuh Manager IP or FQDN.
 
 NET START Wazuh
 
