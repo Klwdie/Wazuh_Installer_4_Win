@@ -67,11 +67,11 @@ $LatestWazuh = $realTagUrl.split('/')[-1].Trim('v')
 
 # Download the Wazuh agent MSI
 Write-Output "Downloading Wazuh agent version $LatestWazuh..."
-Invoke-WebRequest -Uri "https://packages.wazuh.com/4.x/windows/wazuh-agent-$LatestWazuh-1.msi" -OutFile "wazuh-agent.msi" #Make sure to set the right version.
+Invoke-WebRequest -Uri "https://packages.wazuh.com/4.x/windows/wazuh-agent-$LatestWazuh-1.msi" -OutFile "wazuh-agent.msi" # Automatically the latest version but make sure to set the right version.
 
 # Install the Wazuh agent
 Write-Output "Installing Wazuh agent..."
-Start-Process "msiexec.exe" -ArgumentList "/i wazuh-agent.msi /q WAZUH_MANAGER=$Wazuh_Manager_IP_or_FQDN" -Wait #Make sure to set the Wazuh Manager IP or FQDN.
+Start-Process "msiexec.exe" -ArgumentList "/i wazuh-agent.msi /q WAZUH_MANAGER=$Wazuh_Manager_IP_or_FQDN" -Wait # You can set this statically for quicker deployment.
 
 NET START Wazuh
 
