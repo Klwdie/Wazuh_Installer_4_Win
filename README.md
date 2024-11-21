@@ -4,10 +4,10 @@ Getting Wazuh agents deployed quickly especially with Sysmon can be tedious, so 
 
 ## How to use:
 
-1. Download the file.
-2. ```cd "C:\path\to\wherever\it\is\"```
-3. Edit the file to include the specific Agent version, Manager IP, and whatever other changes you'd like. ```powershell -noexit -ExecutionPolicy Bypass ise -File .\Wazuh-Installer.ps1```
-4. ```powershell -noexit -ExecutionPolicy Bypass -File .\Wazuh-Installer.ps1```
+1. Open: ```PowerShell```
+2. To download and run as one command (not recommended): ```powershell Set-Location "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads"; powershell -NoLogo -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Klwdie/Wazuh_Installer_4_Win/refs/heads/main/Wazuh-Installer.ps1' -OutFile '${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1'"; powershell -noexit -ExecutionPolicy Bypass -File "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1"```
+3. To just download: ```powershell Set-Location "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads"; powershell -NoLogo -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Klwdie/Wazuh_Installer_4_Win/refs/heads/main/Wazuh-Installer.ps1' -OutFile '${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1'"```
+4. To delete the file: ```powershell Remove-Item -Path "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1" -Force```
 
 While you can set the Manager IP or FQDN to be an input, that takes time. If you are deploying Wazuh agents to a large environment having it static might be preferred.
 
