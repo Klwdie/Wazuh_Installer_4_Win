@@ -9,7 +9,7 @@ Getting Wazuh agents deployed quickly especially with Sysmon can be tedious, so 
 3. To just download: ```powershell -NoLogo -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/Klwdie/Wazuh_Installer_4_Win/refs/heads/main/Wazuh-Installer.ps1' -OutFile '${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1'"```
 4. To delete the file: ```powershell Remove-Item -Path "${env:HOMEDRIVE}${env:HOMEPATH}\Downloads\Wazuh-Installer-4-Win.ps1" -Force```
 
-This is configured with Wazuh's [Sysmonconfig.xml](https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml) and an input variable for the Wazuh Manager IP or FQDN. 
+This is configured with Wazuh's [Sysmonconfig.xml](https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml) and an input variable for the Wazuh Manager's IP or FQDN. 
 
 You are welcome to download this script and customize it to your needs like setting a static Wazuh Manager IP or FQDN, adding a FIM, Active Response, or other Sysmon configuration.
 
