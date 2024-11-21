@@ -35,6 +35,10 @@ https://documentation.wazuh.com/current/user-manual/agent/agent-management/remov
 ### Wazuh Rule Syntax
 https://documentation.wazuh.com/current/user-manual/ruleset/ruleset-xml-syntax/rules.html
 
+### Preconfigured Sysmonconfig.xml
+https://wazuh.com/blog/emulation-of-attck-techniques-and-detection-with-wazuh/
+https://wazuh.com/resources/blog/emulation-of-attack-techniques-and-detection-with-wazuh/sysmonconfig.xml
+
 # Templates
 You can edit this stuff within the script before deployment.
 ## Sysconfig.xml
